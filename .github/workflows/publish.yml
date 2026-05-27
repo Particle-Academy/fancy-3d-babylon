@@ -21,12 +21,22 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Install
-        run: npm ci
+        run: npm install
 
       - name: Build
         run: npm run build
 
-      # Trusted Publishing (OIDC) requires npm 11.5.1+; bundled npm in
-      # the runner is 10.x. Use npx to fetch a fresh npm just for publish.
+      # ─── BOOTSTRAP MODE ────────────────────────────────────────────────
+      # npm Trusted Publisher (OIDC) can't be configured until the package
+      # exists on npmjs.com. Bootstrap with a granular NPM_TOKEN secret,
+      # publish v0.1.0, then set up Trusted Publisher on the npmjs.com
+      # access page and switch this step to the OIDC form:
+      #
+      #   run: npx -y npm@latest publish --provenance --access public
+      #   env: (drop NODE_AUTH_TOKEN; keep id-token: write above)
+      #
+      # After Trusted Publisher is wired, revoke the NPM_TOKEN secret.
       - name: Publish
         run: npx -y npm@latest publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
