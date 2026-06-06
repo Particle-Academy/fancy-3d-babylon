@@ -1,5 +1,7 @@
 # @particle-academy/fancy-3d-babylon
 
+[![Fancified](art/fancified.svg)](https://particle.academy)
+
 Babylon.js adapter for [`@particle-academy/fancy-3d`](https://www.npmjs.com/package/@particle-academy/fancy-3d).
 
 `fancy-3d` ships an engine-agnostic core (Scene types + a `CanvasEngine` interface + a DOM/CSS-3D renderer). This package adds a full WebGL renderer on top, plus the React components that mount onto a Babylon `Scene`: `Stage`, `Monitor`, `Card3D`, `Screen`, primitives, and layout helpers (`placeOnGrid`, `placeOnArc`, `placeOnWall`, `placeOnSphere`, `placeOnPath`).
