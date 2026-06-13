@@ -64,3 +64,9 @@ The core `fancy-3d` is engine-agnostic and lightweight (~80KB). Pulling in Babyl
 ## License
 
 MIT
+
+---
+
+## ⭐ Star Fancy UI
+
+If this package is useful to you, a quick ⭐ on the repo really helps us build a better kit. Thank you!
