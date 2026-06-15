@@ -7,16 +7,13 @@
  *
  * Every primitive returns a `Mesh`, ready to position in your scene.
  */
-import {
-  Color3,
-  DynamicTexture,
-  Mesh,
-  MeshBuilder,
-  StandardMaterial,
-  Vector3,
-  Vector4,
-  type Scene,
-} from "@babylonjs/core";
+import { Color3 } from "@babylonjs/core/Maths/math.color";
+import { Vector3, Vector4 } from "@babylonjs/core/Maths/math.vector";
+import { DynamicTexture } from "@babylonjs/core/Materials/Textures/dynamicTexture";
+import { Mesh } from "@babylonjs/core/Meshes/mesh";
+import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
+import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial";
+import type { Scene } from "@babylonjs/core/scene";
 import type { WidgetSpec } from "@particle-academy/fancy-3d";
 import { TEX_SCALE, paintWidget } from "./painters";
 

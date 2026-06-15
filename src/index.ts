@@ -8,15 +8,17 @@
  * `@babylonjs/core` is an OPTIONAL peer dependency — only consumers building
  * 3D scenes need to install it.
  */
-import {
-  Color3,
-  DynamicTexture,
-  MeshBuilder,
-  StandardMaterial,
-  Vector3,
-  type Mesh,
-  type Scene as BJScene,
-} from "@babylonjs/core";
+// Granular @babylonjs/core imports (not the barrel) so consumers' bundlers
+// tree-shake to just what we use — the bare "@babylonjs/core" barrel pulls the
+// whole ~6MB engine into the vendor chunk. Each non-".pure" module self-applies
+// its runtime side effects (Babylon 7+ design), so behaviour is unchanged.
+import { Color3 } from "@babylonjs/core/Maths/math.color";
+import { Vector3 } from "@babylonjs/core/Maths/math.vector";
+import { DynamicTexture } from "@babylonjs/core/Materials/Textures/dynamicTexture";
+import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
+import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial";
+import type { Mesh } from "@babylonjs/core/Meshes/mesh";
+import type { Scene as BJScene } from "@babylonjs/core/scene";
 import type {
   AdapterContext,
   Scene,

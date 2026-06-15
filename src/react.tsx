@@ -23,21 +23,20 @@
  *   sorting against other 3D objects is approximate (we hide the overlay
  *   when the mesh is behind the camera or fully occluded by frustum).
  */
-import {
-  ArcRotateCamera,
-  Color3,
-  Color4,
-  DirectionalLight,
-  Engine,
-  HemisphericLight,
-  Matrix,
-  Mesh,
-  MeshBuilder,
-  Scene as BJScene,
-  StandardMaterial,
-  Vector3,
-  type Camera,
-} from "@babylonjs/core";
+// Granular @babylonjs/core imports (not the barrel) for tree-shaking; each
+// non-".pure" module self-applies its side effects (camera inputs, shaders,
+// engine extensions), so `attachControl` / rendering behave exactly as before.
+import { ArcRotateCamera } from "@babylonjs/core/Cameras/arcRotateCamera";
+import { Color3, Color4 } from "@babylonjs/core/Maths/math.color";
+import { DirectionalLight } from "@babylonjs/core/Lights/directionalLight";
+import { Engine } from "@babylonjs/core/Engines/engine";
+import { HemisphericLight } from "@babylonjs/core/Lights/hemisphericLight";
+import { Matrix, Vector3 } from "@babylonjs/core/Maths/math.vector";
+import { Mesh } from "@babylonjs/core/Meshes/mesh";
+import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
+import { Scene as BJScene } from "@babylonjs/core/scene";
+import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial";
+import type { Camera } from "@babylonjs/core/Cameras/camera";
 import {
   createContext,
   useContext,

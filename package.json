@@ -1,6 +1,6 @@
 {
   "name": "@particle-academy/fancy-3d-babylon",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Babylon.js adapter for @particle-academy/fancy-3d — WebGL renderer, primitives, React components (Stage, Monitor, Card3D, Screen) that mount onto a Babylon Scene.",
   "repository": {
     "type": "git",
