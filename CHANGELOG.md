@@ -14,6 +14,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## 0.1.2 — 2026-06-15
+
+### Changed
+
+- granular @babylonjs/core imports for tree-shaking
+
+## 0.1.1 — 2026-06-02
+
+- Maintenance only (2 internal commits).
+
+## 0.1.0 — 2026-05-27
+
+- Maintenance only (2 internal commits).
+
 ### Changed
 
 - Widened the `@particle-academy/fancy-3d` requirement from `^0.4.0` to `>=0.4 <2.0`, so a
