@@ -99,6 +99,15 @@ export function placeOnCylinder(node: SceneNode, mesh: Mesh, bounds: { minX: num
 }
 
 export function sceneBounds(scene: Scene) {
+  // An empty scene has no extent, and saying so is the only safe answer.
+  // Math.min(...[]) is Infinity and Math.max(...[]) is -Infinity, so the
+  // unguarded spread returned INVERTED INFINITE bounds. Every layout then
+  // centres on (minX + maxX) / 2, which is NaN, and a NaN transform renders as
+  // nothing — so an empty scene and a broken one looked identical.
+  if (scene.nodes.length === 0) {
+    return { minX: 0, maxX: 0, minY: 0, maxY: 0 };
+  }
+
   const xs = scene.nodes.map((n) => n.position.x);
   const ys = scene.nodes.map((n) => n.position.y);
   const xe = scene.nodes.map((n) => n.position.x + (n.size?.w ?? 200));
