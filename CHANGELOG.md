@@ -23,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- **The `<Stage>` canvas now shows a keyboard focus ring.** It was focusable (`tabIndex=0`, the camera controls listen on it) but carried an inline `outline: none`, so a keyboard user tabbing onto it saw nothing. `<Stage>` now renders a scoped `<style>` giving the canvas, marked `data-fancy-3d-canvas`, an inset `:focus-visible` box-shadow ring in the kit focus token (`--fancy-focus`, dark `--fancy-focus-dark`, falling back to Tailwind blue-500/400). It is a box-shadow because the inline outline beats any stylesheet outline, and a `<style>` rather than Tailwind classes because a consumer's Tailwind is not guaranteed to scan this package. Nothing to do; set `--fancy-focus` to restyle it.
+
 - **`CHANGELOG.md` is now in the published tarball.** `files` did not whitelist it, so npm never shipped it — and this package puts breaking changes in MINOR releases and tells you in the README to read the entry before taking one. The instruction existed for the author, who has the file, and not for the consumer, who is the only one being instructed. Nothing for you to do; the file simply arrives from this release on.
 
 ### Security

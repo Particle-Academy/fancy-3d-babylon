@@ -155,6 +155,18 @@ export interface StageProps {
   style?: CSSProperties;
 }
 
+/**
+ * Keyboard focus ring for the Stage canvas. The canvas is focusable (the camera
+ * controls attach to it) and carries an inline `outline: none`, which beats any
+ * stylesheet outline — so the ring is a box-shadow, a separate property. Inset,
+ * because the Stage container clips overflow. Shipped as a scoped `<style>`
+ * rather than Tailwind classes: consumers are not guaranteed to scan this
+ * package's dist, and a class nobody generates is a ring nobody sees.
+ */
+const STAGE_FOCUS_CSS =
+  "[data-fancy-3d-canvas]:focus-visible { box-shadow: inset 0 0 0 2px var(--fancy-focus, var(--color-blue-500, #3b82f6)); }" +
+  " :where(.dark, [data-theme=\"dark\"]) [data-fancy-3d-canvas]:focus-visible { box-shadow: inset 0 0 0 2px var(--fancy-focus-dark, var(--color-blue-400, #60a5fa)); }";
+
 export function Stage({
   children,
   cameraRadius = 10,
@@ -243,10 +255,12 @@ export function Stage({
       style={{ position: "relative", overflow: "hidden", ...style }}
       data-fancy-3d-stage=""
     >
+      <style data-fancy-3d-stage-css="">{STAGE_FOCUS_CSS}</style>
       <canvas
         ref={canvasRef}
         style={{ display: "block", width: "100%", height: "100%", outline: "none" }}
         tabIndex={0}
+        data-fancy-3d-canvas=""
       />
       <div
         ref={overlayRef}
