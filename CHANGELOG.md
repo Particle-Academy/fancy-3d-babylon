@@ -19,6 +19,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Rebranded the display name to Fancy Dev Kit (README and package description). Package names, the npm scope, URLs and the `fancy-ui` MCP id are unchanged.
 - **Docs:** `AGENTS.md` added: the guide to using this package (install, its entries on the Fancy MCP catalog server, API essentials, traps), and it ships in the package. `CONTRIBUTING.md` added for the contributor notes, with `CLAUDE.md` as a symlink to it. The README points to the MCP server and to `AGENTS.md`. No code changed; nothing to do.
 
+### Fixed
+
+- **Docs:** the README no longer shows a `<Card3D>` React component or a `Screen` export from `/react`; neither exists. `/react` exports `<Stage>`, `<Monitor>` and `useStage`, and extruded cards are the `createCard3D` mesh primitive from the root entry. The `<Stage>` example now uses its real camera props (`cameraRadius`, `cameraTarget`) and the layout examples use the real options (`scale`; `radius`, `arc`). Docs only; nothing to do.
+
 ## 0.2.1 — 2026-11-13
 
 ### Changed

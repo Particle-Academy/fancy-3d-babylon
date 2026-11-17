@@ -4,7 +4,7 @@
 
 Babylon.js adapter for [`@particle-academy/fancy-3d`](https://www.npmjs.com/package/@particle-academy/fancy-3d).
 
-`fancy-3d` ships an engine-agnostic core (Scene types + a `CanvasEngine` interface + a DOM/CSS-3D renderer). This package adds a full WebGL renderer on top, plus the React components that mount onto a Babylon `Scene`: `Stage`, `Monitor`, `Card3D`, `Screen`, primitives, and layout helpers (`placeOnGrid`, `placeOnArc`, `placeOnWall`, `placeOnSphere`, `placeOnPath`).
+`fancy-3d` ships an engine-agnostic core (Scene types + a `CanvasEngine` interface + a DOM/CSS-3D renderer). This package adds a full WebGL renderer on top, plus the React components that mount onto a Babylon `Scene` (`Stage`, `Monitor` and the `useStage` hook, from `/react`), mesh primitives (`createPanel`, `createMonitor`, `createCard3D`, ...), and layout helpers (`placeOnGrid`, `placeOnArc`, `placeOnWall`, `placeOnSphere`, `placeOnPath`).
 
 > A Three.js / WebGPU / WebXR engine could ship as a sibling package: `fancy-3d-three`, `fancy-3d-webgpu`, etc. They implement the same `CanvasEngine` interface from the core; they don't depend on this one.
 
@@ -37,21 +37,18 @@ import { babylonEngine } from "@particle-academy/fancy-3d-babylon/engine";
 </Canvas>
 ```
 
-### Stage / Monitor / Card3D (React)
+### Stage / Monitor (React)
 
 ```tsx
-import { Stage, Monitor, Card3D } from "@particle-academy/fancy-3d-babylon/react";
+import { Stage, Monitor } from "@particle-academy/fancy-3d-babylon/react";
 import { Card } from "@particle-academy/react-fancy";
 
-<Stage camera={{ position: [0, 2, 5], target: [0, 0, 0] }}>
+<Stage cameraRadius={5} cameraTarget={[0, 1, 0]}>
   <Monitor width={2} height={1.2} position={[0, 1, 0]}>
     <Card>
       <Card.Body>This react-fancy card renders as a live WebGL texture.</Card.Body>
     </Card>
   </Monitor>
-  <Card3D position={[2, 0, 0]} rotation={[0, 30, 0]}>
-    <h3>Children are plain React</h3>
-  </Card3D>
 </Stage>
 ```
 
@@ -60,8 +57,8 @@ import { Card } from "@particle-academy/react-fancy";
 ```tsx
 import { placeOnGrid, placeOnArc } from "@particle-academy/fancy-3d-babylon";
 
-placeOnGrid(node, mesh, bounds, { cols: 4, gapX: 0.2, gapY: 0.2 });
-placeOnArc(node, mesh, bounds, { radius: 3, startAngle: 0, endAngle: Math.PI });
+placeOnGrid(node, mesh, bounds, { scale: 1 / 120 });
+placeOnArc(node, mesh, bounds, { radius: 3, arc: Math.PI });
 ```
 
 ## Why a separate package?
